@@ -1,7 +1,6 @@
 const Light = require('./devices/Light')
 const Thermostat = require('./devices/Thermostat')
 const Alarm = require('./devices/Alarm')
-const Tracker = require('./devices/Tracker')
 const Room = require('./Room')
 const Person = require('./Person.js')
 
@@ -46,8 +45,7 @@ class House {
                 a0: new Alarm(this,'ground',true),
                 a1: new Alarm(this, 'first', false),
                 a2: new Alarm(this, 'other', true)
-            },
-            tracker: new Tracker(this)
+            }
         }
 
         this.rooms = { 
@@ -64,15 +62,12 @@ class House {
         }
 
         this.people.jim.observe('in_room', (v, k)=>{
-            this.devices.tracker.update()
             console.log('in_room jim ' + v)
         })
         this.people.sara.observe('in_room', (v, k)=>{
-            this.devices.tracker.update()
             console.log('in_room sara ' + v)
         })
         this.people.luke.observe('in_room', (v, k)=>{
-            this.devices.tracker.update()
             console.log('in_room luke ' + v)
         })
     }
